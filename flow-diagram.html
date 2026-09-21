@@ -10,9 +10,7 @@
   【两种使用方式】
   方式一 · 提示词：让 AI 按 JSON 契约生成数据，再用本页右上角「导入 JSON」
                    载入 —— 立刻渲染成一张可继续编辑的图。
-                   JSON 结构见同目录《空白模板_JSON结构与Prompt模板.md》。
-  方式二 · skill ：使用配套 skill，由它自动走完
-                   「生成 JSON → 导入本模板」整套流程，无需手工拼数据。
+                   JSON 结构见同目录 README.md。
 
   【能力】多页签 / 区域分组 / 节点四种形状 / 连线三种样式（曲线·直线·折线）
           / 阶段线 / 拖拽编辑 / 右键菜单 / 6 套主题 / JSON 导入导出
@@ -1158,6 +1156,280 @@
   body[data-theme="clay-soft"] .empty-state { color: #b3a597; }
   body[data-theme="clay-soft"] .svg-zone-rect:not(.selected) {
     stroke: rgba(139,115,90,0.25); stroke-opacity: 1;
+    filter: url(#clay-soft-3d);
+    rx: 16; ry: 16;
+  }
+  body[data-theme="clay-soft"] .svg-node-rect:not(.selected) {
+    filter: url(#clay-soft-3d);
+  }
+
+  /* ============================================================
+     —— warm-editorial（暖调编辑）——
+     配色：奶油底 + 深青/琥珀/靛蓝点缀；柔和卡片投影
+     ============================================================ */
+  body[data-theme="warm-editorial"] {
+    background:
+      radial-gradient(900px 500px at 15% 10%, rgba(45,155,131,0.06), transparent 50%),
+      radial-gradient(800px 400px at 85% 90%, rgba(232,168,56,0.06), transparent 50%),
+      linear-gradient(180deg, #F5F0E8 0%, #EDE7DB 100%);
+    --bg-deep: #F5F0E8;
+    --bg-panel: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --bg-input: #FAF7F2;
+    --border: rgba(44,62,80,0.12);
+    --border-hi: rgba(44,62,80,0.25);
+    --text: #2C3E50;
+    --text-dim: #5D7285;
+    --text-faint: #94A3B8;
+    --emerald: #2D9B83;
+    --blue: #4A7FB5;
+    --amber: #E8A838;
+    --purple: #8B6DB0;
+    --cyan: #3BA5A0;
+    --pink: #D4738A;
+    --red: #D45D5D;
+  }
+  body[data-theme="warm-editorial"] .topbar,
+  body[data-theme="warm-editorial"] .tab-bar {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom-color: rgba(44,62,80,0.08);
+  }
+  body[data-theme="warm-editorial"] .btn {
+    background: #FFFFFF;
+    border: 1px solid rgba(44,62,80,0.12);
+    border-radius: 8px;
+    color: #2C3E50;
+    box-shadow: 0 1px 3px rgba(44,62,80,0.06);
+  }
+  body[data-theme="warm-editorial"] .btn:hover {
+    background: #FAF7F2;
+    border-color: rgba(45,155,131,0.30);
+  }
+  body[data-theme="warm-editorial"] .btn-tab { border-radius: 8px 8px 0 0; }
+  body[data-theme="warm-editorial"] .btn-tab.active {
+    background: #FFFFFF;
+    border-bottom-color: #2D9B83;
+    color: #2D9B83;
+    box-shadow: 0 -2px 8px rgba(45,155,131,0.08);
+  }
+  body[data-theme="warm-editorial"] .side-panel {
+    background: #FFFFFF;
+    border-left: 1px solid rgba(44,62,80,0.08);
+    box-shadow: -4px 0 20px rgba(44,62,80,0.04);
+  }
+  body[data-theme="warm-editorial"] .form-input,
+  body[data-theme="warm-editorial"] .form-select {
+    background: #FAF7F2;
+    border: 1px solid rgba(44,62,80,0.10);
+    border-radius: 6px;
+    color: #2C3E50;
+  }
+  body[data-theme="warm-editorial"] .form-input:focus,
+  body[data-theme="warm-editorial"] .form-select:focus {
+    border-color: #2D9B83;
+    box-shadow: 0 0 0 2px rgba(45,155,131,0.12);
+  }
+  body[data-theme="warm-editorial"] .context-menu {
+    background: #FFFFFF;
+    border: 1px solid rgba(44,62,80,0.10);
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(44,62,80,0.12);
+  }
+  body[data-theme="warm-editorial"] .context-item:hover { background: rgba(45,155,131,0.06); color: #2D9B83; }
+  body[data-theme="warm-editorial"] .export-menu {
+    background: #FFFFFF;
+    border: 1px solid rgba(44,62,80,0.10);
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(44,62,80,0.12);
+  }
+  body[data-theme="warm-editorial"] .export-item:hover { background: rgba(45,155,131,0.06); color: #2D9B83; }
+  body[data-theme="warm-editorial"] .toast {
+    background: #FFFFFF;
+    border: 1px solid rgba(45,155,131,0.20);
+    border-radius: 10px;
+    color: #2D9B83;
+    box-shadow: 0 8px 24px rgba(44,62,80,0.10);
+  }
+  body[data-theme="warm-editorial"] .modal-mask { background: rgba(44,62,80,0.15); }
+  body[data-theme="warm-editorial"] .modal-box {
+    background: #FFFFFF;
+    border: 1px solid rgba(44,62,80,0.08);
+    border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(44,62,80,0.15);
+  }
+  body[data-theme="warm-editorial"] .modal-title { color: #2C3E50; }
+  body[data-theme="warm-editorial"] .modal-btn {
+    background: #FFFFFF;
+    border: 1px solid rgba(44,62,80,0.12);
+    border-radius: 8px;
+  }
+  body[data-theme="warm-editorial"] .modal-btn:hover { background: #FAF7F2; }
+  body[data-theme="warm-editorial"] .modal-btn.primary {
+    background: linear-gradient(160deg, #35B094, #2D9B83);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(45,155,131,0.30);
+  }
+  body[data-theme="warm-editorial"] .sys-chip { border-color: rgba(44,62,80,0.12); color: #5D7285; }
+  body[data-theme="warm-editorial"] .sys-chip.on {
+    background: rgba(45,155,131,0.08);
+    border-color: rgba(45,155,131,0.30);
+    color: #2D9B83;
+  }
+  body[data-theme="warm-editorial"] .color-swatch.selected {
+    border-color: #2D9B83;
+    box-shadow: 0 0 0 2px rgba(45,155,131,0.20);
+  }
+  body[data-theme="warm-editorial"] .node-list-item:hover { background: rgba(45,155,131,0.04); }
+  body[data-theme="warm-editorial"] .node-list-item.active { background: rgba(45,155,131,0.08); }
+  body[data-theme="warm-editorial"] .empty-state { color: #94A3B8; }
+  body[data-theme="warm-editorial"] .arrange-btn {
+    background: linear-gradient(160deg, #35B094, #2D9B83);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(45,155,131,0.25);
+  }
+  body[data-theme="warm-editorial"] .mode-banner {
+    background: rgba(232,168,56,0.10);
+    border: 1px solid rgba(232,168,56,0.25);
+    border-radius: 8px;
+    color: #B8862D;
+  }
+
+  /* ============================================================
+     —— clean-dashboard（简洁仪表）——
+     配色：灰白底 + 石板蓝/琥珀/鼠尾草绿；干净专业
+     ============================================================ */
+  body[data-theme="clean-dashboard"] {
+    background:
+      radial-gradient(1000px 500px at 50% 0%, rgba(91,123,154,0.04), transparent 60%),
+      linear-gradient(180deg, #F0EBE3 0%, #E8E2D8 100%);
+    --bg-deep: #F0EBE3;
+    --bg-panel: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --bg-input: #F7F4EF;
+    --border: rgba(61,61,61,0.10);
+    --border-hi: rgba(61,61,61,0.22);
+    --text: #3D3D3D;
+    --text-dim: #6B6B6B;
+    --text-faint: #9B9B9B;
+    --emerald: #7A9E7E;
+    --blue: #5B7B9A;
+    --amber: #D4A05A;
+    --purple: #8E7CC3;
+    --cyan: #6BA3A0;
+    --pink: #C47E8A;
+    --red: #C76B6B;
+  }
+  body[data-theme="clean-dashboard"] .topbar,
+  body[data-theme="clean-dashboard"] .tab-bar {
+    background: rgba(255,255,255,0.90);
+    backdrop-filter: blur(6px);
+    border-bottom-color: rgba(61,61,61,0.06);
+  }
+  body[data-theme="clean-dashboard"] .btn {
+    background: #FFFFFF;
+    border: 1px solid rgba(61,61,61,0.10);
+    border-radius: 6px;
+    color: #3D3D3D;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  body[data-theme="clean-dashboard"] .btn:hover {
+    background: #F7F4EF;
+    border-color: rgba(91,123,154,0.30);
+  }
+  body[data-theme="clean-dashboard"] .btn-tab { border-radius: 6px 6px 0 0; }
+  body[data-theme="clean-dashboard"] .btn-tab.active {
+    background: #FFFFFF;
+    border-bottom-color: #5B7B9A;
+    color: #5B7B9A;
+    box-shadow: 0 -2px 6px rgba(91,123,154,0.06);
+  }
+  body[data-theme="clean-dashboard"] .side-panel {
+    background: #FFFFFF;
+    border-left: 1px solid rgba(61,61,61,0.06);
+    box-shadow: -2px 0 12px rgba(0,0,0,0.03);
+  }
+  body[data-theme="clean-dashboard"] .form-input,
+  body[data-theme="clean-dashboard"] .form-select {
+    background: #F7F4EF;
+    border: 1px solid rgba(61,61,61,0.10);
+    border-radius: 6px;
+    color: #3D3D3D;
+  }
+  body[data-theme="clean-dashboard"] .form-input:focus,
+  body[data-theme="clean-dashboard"] .form-select:focus {
+    border-color: #5B7B9A;
+    box-shadow: 0 0 0 2px rgba(91,123,154,0.12);
+  }
+  body[data-theme="clean-dashboard"] .context-menu {
+    background: #FFFFFF;
+    border: 1px solid rgba(61,61,61,0.08);
+    border-radius: 8px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+  }
+  body[data-theme="clean-dashboard"] .context-item:hover { background: rgba(91,123,154,0.06); color: #5B7B9A; }
+  body[data-theme="clean-dashboard"] .export-menu {
+    background: #FFFFFF;
+    border: 1px solid rgba(61,61,61,0.08);
+    border-radius: 8px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+  }
+  body[data-theme="clean-dashboard"] .export-item:hover { background: rgba(91,123,154,0.06); color: #5B7B9A; }
+  body[data-theme="clean-dashboard"] .toast {
+    background: #FFFFFF;
+    border: 1px solid rgba(122,158,126,0.25);
+    border-radius: 8px;
+    color: #5E8562;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  }
+  body[data-theme="clean-dashboard"] .modal-mask { background: rgba(61,61,61,0.12); }
+  body[data-theme="clean-dashboard"] .modal-box {
+    background: #FFFFFF;
+    border: 1px solid rgba(61,61,61,0.06);
+    border-radius: 12px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  }
+  body[data-theme="clean-dashboard"] .modal-title { color: #3D3D3D; }
+  body[data-theme="clean-dashboard"] .modal-btn {
+    background: #FFFFFF;
+    border: 1px solid rgba(61,61,61,0.10);
+    border-radius: 6px;
+  }
+  body[data-theme="clean-dashboard"] .modal-btn:hover { background: #F7F4EF; }
+  body[data-theme="clean-dashboard"] .modal-btn.primary {
+    background: linear-gradient(160deg, #6B8FB0, #5B7B9A);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(91,123,154,0.25);
+  }
+  body[data-theme="clean-dashboard"] .sys-chip { border-color: rgba(61,61,61,0.10); color: #6B6B6B; }
+  body[data-theme="clean-dashboard"] .sys-chip.on {
+    background: rgba(91,123,154,0.08);
+    border-color: rgba(91,123,154,0.30);
+    color: #5B7B9A;
+  }
+  body[data-theme="clean-dashboard"] .color-swatch.selected {
+    border-color: #5B7B9A;
+    box-shadow: 0 0 0 2px rgba(91,123,154,0.18);
+  }
+  body[data-theme="clean-dashboard"] .node-list-item:hover { background: rgba(91,123,154,0.04); }
+  body[data-theme="clean-dashboard"] .node-list-item.active { background: rgba(91,123,154,0.08); }
+  body[data-theme="clean-dashboard"] .empty-state { color: #9B9B9B; }
+  body[data-theme="clean-dashboard"] .arrange-btn {
+    background: linear-gradient(160deg, #8AAE8E, #7A9E7E);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(122,158,126,0.25);
+  }
+  body[data-theme="clean-dashboard"] .mode-banner {
+    background: rgba(212,160,90,0.08);
+    border: 1px solid rgba(212,160,90,0.20);
+    border-radius: 6px;
+    color: #A07D3F;
   }
 </style>
 </head>
@@ -1188,6 +1460,8 @@
       <option value="dark-glass">dark-glass</option>
       <option value="tech-blue">tech-blue</option>
       <option value="emerald-night">emerald-night</option>
+      <option value="warm-editorial">暖调编辑</option>
+      <option value="clean-dashboard">简洁仪表</option>
     </select>
     <div class="export-wrap" id="exportWrap">
       <button class="btn" onclick="toggleExportMenu(event)">导出 ▾</button>
@@ -1216,6 +1490,10 @@
     <svg id="mainSvg" viewBox="0 0 1200 560" preserveAspectRatio="xMidYMid meet">
       <defs>
         <filter id="glow-edit"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="clay-soft-3d" x="-8%" y="-8%" width="116%" height="124%">
+          <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="rgba(92,74,61,0.16)"/>
+          <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="rgba(92,74,61,0.08)"/>
+        </filter>
         <!-- Zone gradient fills (matching the showcase version) -->
         <linearGradient id="zg-emerald" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#22C55E" stop-opacity="0.16"/><stop offset="100%" stop-color="#06B6D4" stop-opacity="0.06"/></linearGradient>
         <linearGradient id="zg-amber" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F59E0B" stop-opacity="0.16"/><stop offset="100%" stop-color="#EC4899" stop-opacity="0.06"/></linearGradient>
@@ -1324,6 +1602,67 @@ const COLORS = {
   indigo: '#6366F1', violet: '#8B5CF6', fuchsia: '#D946EF',
   rose: '#F43F5E', orange: '#F97316', yellow: '#EAB308'
 };
+
+/**
+ * 每个主题的专属色板。键名与 COLORS 一致，值为该主题下图元素的实际色值。
+ * 切换主题时 resolveColor() 从当前主题色板取色，数据层仍存命名色键（不变）。
+ */
+const THEME_PALETTES = {
+  'dark-glass': {
+    emerald: '#34D399', blue: '#60A5FA', amber: '#FBBF24',
+    purple: '#C084FC', cyan: '#22D3EE', pink: '#F472B6', red: '#F87171',
+    slate: '#94A3B8', lime: '#A3E635', teal: '#2DD4BF', sky: '#38BDF8',
+    indigo: '#818CF8', violet: '#A78BFA', fuchsia: '#E879F9',
+    rose: '#FB7185', orange: '#FB923C', yellow: '#FACC15'
+  },
+  'tech-blue': {
+    emerald: '#2DD4BF', blue: '#38BDF8', amber: '#F59E0B',
+    purple: '#A78BFA', cyan: '#22D3EE', pink: '#F472B6', red: '#F87171',
+    slate: '#64748B', lime: '#84CC16', teal: '#14B8A6', sky: '#0EA5E9',
+    indigo: '#6366F1', violet: '#8B5CF6', fuchsia: '#D946EF',
+    rose: '#F43F5E', orange: '#F97316', yellow: '#EAB308'
+  },
+  'emerald-night': {
+    emerald: '#34D399', blue: '#6EE7B7', amber: '#A3E635',
+    purple: '#86EFAC', cyan: '#2DD4BF', pink: '#6EE7B7', red: '#F87171',
+    slate: '#6B7280', lime: '#A3E635', teal: '#2DD4BF', sky: '#5EEAD4',
+    indigo: '#6EE7B7', violet: '#86EFAC', fuchsia: '#A7F3D0',
+    rose: '#FCA5A5', orange: '#FCD34D', yellow: '#D9F99D'
+  },
+  'memphis': {
+    emerald: '#10B981', blue: '#2563EB', amber: '#D97706',
+    purple: '#9333EA', cyan: '#0891B2', pink: '#DB2777', red: '#DC2626',
+    slate: '#64748B', lime: '#65A30D', teal: '#0D9488', sky: '#0284C7',
+    indigo: '#4F46E5', violet: '#7C3AED', fuchsia: '#C026D3',
+    rose: '#E11D48', orange: '#EA580C', yellow: '#CA8A04'
+  },
+  'clay-soft': {
+    emerald: '#C97B4E', blue: '#7A9E7E', amber: '#D4A05A',
+    purple: '#A5888C', cyan: '#8EAAA2', pink: '#C490A0', red: '#C97B5A',
+    slate: '#B3A597', lime: '#9EAE7E', teal: '#7A9E96', sky: '#8EAAB0',
+    indigo: '#9E8EAE', violet: '#AE96A0', fuchsia: '#C4909E',
+    rose: '#C9808A', orange: '#D4A070', yellow: '#CEAE6E'
+  },
+  'warm-editorial': {
+    emerald: '#2D9B83', blue: '#4A7FB5', amber: '#E8A838',
+    purple: '#8B6DB0', cyan: '#3BA5A0', pink: '#D4738A', red: '#D45D5D',
+    slate: '#94A3B8', lime: '#6B9B37', teal: '#2D8B7A', sky: '#3A8FB7',
+    indigo: '#5B6DB0', violet: '#7B5DA0', fuchsia: '#B04D7A',
+    rose: '#C05D6D', orange: '#D07838', yellow: '#C09830'
+  },
+  'clean-dashboard': {
+    emerald: '#10B981', blue: '#3B82F6', amber: '#F59E0B',
+    purple: '#8B5CF6', cyan: '#06B6D4', pink: '#EC4899', red: '#EF4444',
+    slate: '#64748B', lime: '#84CC16', teal: '#14B8A6', sky: '#0EA5E9',
+    indigo: '#6366F1', violet: '#8B5CF6', fuchsia: '#D946EF',
+    rose: '#F43F5E', orange: '#F97316', yellow: '#EAB308'
+  }
+};
+
+function getActiveColors() {
+  const theme = document.body.getAttribute('data-theme') || '';
+  return THEME_PALETTES[theme] || COLORS;
+}
 // 颜色盘“常用一排”：精挑的常用色（一条即可铺满）；末位固定为“无颜色”(none)
 const COMMON_COLORS = ['emerald','blue','amber','purple','cyan','pink','red','none'];
 
@@ -1347,6 +1686,79 @@ function lsGetMigrated(key, legacyKey) {
   return null;
 }
 
+// ============================================================
+// 类型定义（JSDoc）—— 仅用于编辑器智能提示，不影响运行时
+// ============================================================
+
+/**
+ * @typedef {Object} DiagramNode
+ * @property {string} id - 唯一标识，如 'n1'
+ * @property {number} x - 左上角 x 坐标
+ * @property {number} y - 左上角 y 坐标
+ * @property {number} w - 宽度
+ * @property {number} h - 高度
+ * @property {string} name - 节点名称
+ * @property {string[]} [sys] - 系统标识数组，如 ['SCM','WMS']
+ * @property {string} [color] - 边框色：命名色 / 'none' / '#RRGGBB'
+ * @property {string} [fill] - 填充色：'' = 默认浅底 / 命名色 / 'none' = 透明
+ * @property {'solid'|'dashed'|'none'} [borderStyle] - 边框样式
+ * @property {string} [zone] - 所属区域 id
+ * @property {'rect'|'circle'|'rhombus'|'hexagon'} [shape] - 节点形状
+ * @property {string} [linkTab] - 双击跳转的页签 id
+ */
+
+/**
+ * @typedef {Object} DiagramZone
+ * @property {string} id - 唯一标识，如 'z1'
+ * @property {number} x - 左上角 x 坐标
+ * @property {number} y - 左上角 y 坐标
+ * @property {number} w - 宽度
+ * @property {number} h - 高度
+ * @property {string} label - 区域名称
+ * @property {string} [color] - 边框色
+ * @property {string} [fill] - 填充色
+ * @property {'solid'|'dashed'|'none'} [borderStyle] - 边框样式
+ */
+
+/**
+ * @typedef {Object} DiagramFlow
+ * @property {string} id - 唯一标识，如 'f1'
+ * @property {string} from - 起始节点 id
+ * @property {string} to - 目标节点 id
+ * @property {string} [color] - 连线颜色
+ * @property {'top'|'bottom'|'left'|'right'|null} [fs] - 起点锚点方向
+ * @property {'top'|'bottom'|'left'|'right'|null} [ts] - 终点锚点方向
+ * @property {'curve'|'line'|'poly'} [style] - 连线样式
+ * @property {number} [curve] - 曲率倍率 0.2~2.5
+ * @property {string} [note] - 连线备注文字
+ */
+
+/**
+ * @typedef {Object} DiagramHLine
+ * @property {string} id - 唯一标识，如 'h1'
+ * @property {number} y - 横线垂直位置
+ * @property {string} label - 阶段名称
+ */
+
+/**
+ * @typedef {Object} DiagramTab
+ * @property {string} id - 页签 id
+ * @property {string} label - 页签名称
+ * @property {string} [desc] - 页签备注
+ * @property {DiagramNode[]} nodes - 节点数组
+ * @property {DiagramFlow[]} flows - 连线数组
+ * @property {DiagramZone[]} zones - 区域数组
+ * @property {DiagramHLine[]} [hlines] - 阶段线数组
+ */
+
+/**
+ * @typedef {Object} DiagramRoot
+ * @property {number} version - 数据版本（当前为 1）
+ * @property {string} [appTitle] - 应用标题
+ * @property {DiagramTab[]} tabs - 页签数组
+ */
+
+/** @type {{ appTitle:string, tabs:DiagramTab[], activeTab:string|null, selectedId:string|null, selectedType:string|null, selectedZones:string[], connectMode:boolean, connectFrom:string|null, connectFromSide:string|null, animationOn:boolean, nextId:number }} */
 let state = {
   appTitle: '空白模板',
   tabs: [],           // [{id,label,desc,nodes:[],flows:[],zones:[]}]
@@ -1361,20 +1773,49 @@ let state = {
   nextId: 1000
 };
 
+let clipboard = null; // Ctrl+C 复制的节点快照
+
 // ============================================================
 // 主题：孟菲斯 + 黏土软3D + 默认浅色 + 3 套深色（默认开启浅色），
 // 仅改变"界面皮肤"；节点/区域的数据配色保持不变
 // ============================================================
-const THEMES = { 'memphis': 1, 'clay-soft': 1, 'dark-glass': 1, 'tech-blue': 1, 'emerald-night': 1 };
+const THEMES = { 'memphis': 1, 'clay-soft': 1, 'dark-glass': 1, 'tech-blue': 1, 'emerald-night': 1, 'warm-editorial': 1, 'clean-dashboard': 1 };
 function applyTheme(name) {
   const body = document.body;
   const t = (name && THEMES[name]) ? name : '';
   if (t) body.setAttribute('data-theme', t);
   else body.removeAttribute('data-theme');
-  // 显式记录选择（含空串=默认浅色），避免下次打开回落到默认主题
   try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
   const sel = document.getElementById('themeSelect');
   if (sel) sel.value = t;
+  updateSVGDefs();
+  if (typeof render === 'function') render();
+}
+
+/** 切换主题时更新 SVG defs 中的箭头标记和区域渐变色，使其匹配当前主题色板 */
+function updateSVGDefs() {
+  const palette = getActiveColors();
+  const theme = document.body.getAttribute('data-theme') || '';
+  const hiOpacity = theme === 'clay-soft';
+  Object.keys(COLORS).forEach(key => {
+    const hex = palette[key] || COLORS[key];
+    const marker = document.getElementById('arr-' + key);
+    if (marker) {
+      const path = marker.querySelector('path');
+      if (path) path.setAttribute('fill', hex);
+    }
+    const grad = document.getElementById('zg-' + key);
+    if (grad) {
+      const stops = grad.querySelectorAll('stop');
+      if (stops[0]) {
+        stops[0].setAttribute('stop-color', hex);
+        stops[0].setAttribute('stop-opacity', hiOpacity ? '0.26' : '0.16');
+      }
+      if (stops[1]) {
+        stops[1].setAttribute('stop-opacity', hiOpacity ? '0.12' : '0.06');
+      }
+    }
+  });
 }
 
 // ============================================================
@@ -1517,6 +1958,7 @@ function init() {
   applyTheme(savedTheme);
 }
 
+/** @returns {DiagramTab|undefined} */
 function getTab() {
   return state.tabs.find(t => t.id === state.activeTab) || state.tabs[0];
 }
@@ -1717,10 +2159,36 @@ function undo() {
   showToast('已撤销');
 }
 document.addEventListener('keydown', (e) => {
+  const inInput = e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable);
   if ((e.ctrlKey || e.metaKey) && (e.key === 'z' || e.key === 'Z')) {
-    // 输入框/可编辑区域内用原生文字撤销，不触发整体撤销
-    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable)) return;
+    if (inInput) return;
     e.preventDefault(); undo();
+  }
+  if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'C')) {
+    if (inInput) return;
+    if (state.selectedType === 'node' && state.selectedId) {
+      const tab = getTab();
+      const node = (tab.nodes || []).find(n => n.id === state.selectedId);
+      if (node) {
+        clipboard = { ...node, sys: Array.isArray(node.sys) ? [...node.sys] : node.sys };
+        showToast('已复制节点：' + node.name);
+      }
+    }
+  }
+  if ((e.ctrlKey || e.metaKey) && (e.key === 'v' || e.key === 'V')) {
+    if (inInput) return;
+    if (clipboard) {
+      e.preventDefault();
+      pushUndo();
+      const tab = getTab();
+      const newId = 'n' + (state.nextId++);
+      const pasted = { ...clipboard, id: newId, x: clipboard.x + 40, y: clipboard.y + 40, sys: Array.isArray(clipboard.sys) ? [...clipboard.sys] : clipboard.sys };
+      tab.nodes.push(pasted);
+      state.selectedId = newId;
+      state.selectedType = 'node';
+      render();
+      showToast('已粘贴节点');
+    }
   }
 });
 // 属性面板输入框/下拉框聚焦即记录一次撤销快照（一次编辑/选择 = 一个撤销单位）
@@ -1742,6 +2210,13 @@ function switchTab(tabId) {
   render();
 }
 
+let _renderPending = false;
+function scheduleRender() {
+  if (_renderPending) return;
+  _renderPending = true;
+  requestAnimationFrame(() => { _renderPending = false; render(); });
+}
+
 function render() {
   const tab = getTab();
   renderZones(tab);
@@ -1756,7 +2231,7 @@ function render() {
   markDirty();
 }
 
-// 画布自适应：按内容边界动态扩展 viewBox 宽高（原点保持 0,0，最小 1200x560）。
+// 画布自适应：按内容边界动态扩展 viewBox 宽高（保留当前平移偏移，最小 1200x560）。
 // 宽度必须跟着内容走：早期版本把宽度写死 1200，导致 x>1200 的区域（如时序图最右侧泳道）
 // 被裁到画布外，看不见也点不中。
 function fitViewBox() {
@@ -1769,24 +2244,27 @@ function fitViewBox() {
   (tab.hlines || []).forEach(h => { maxY = Math.max(maxY, h.y + 24); });
   const vbW = Math.max(1200, Math.ceil(maxX + 80)); // 右侧留白，最小 1200
   const vbH = Math.max(560, Math.ceil(maxY + 80));  // 底部留白，最小 560
-  const next = '0 0 ' + vbW + ' ' + vbH;
+  const cur = (svgEl.getAttribute('viewBox') || '0 0 1200 560').split(/\s+/).map(Number);
+  const ox = cur[0] || 0, oy = cur[1] || 0;
+  const next = ox + ' ' + oy + ' ' + vbW + ' ' + vbH;
   if (svgEl.getAttribute('viewBox') !== next) svgEl.setAttribute('viewBox', next);
 }
 
-// 区域填充：优先用渐变；渐变 defs 缺失时回退为纯色半透明。
-// 关键：绝不能返回无效的 url(#...) —— 无效 paint 会让区域"无填充"，
-// 而默认 pointer-events: visiblePainted 下无填充 = 点不中（边框仍可见，极具迷惑性）。
+// 区域填充：纯色半透明，不使用渐变
 function zoneFill(colorKey) {
-  const hex = COLORS[colorKey] || (typeof colorKey === 'string' && /^#[0-9a-fA-F]{6}$/.test(colorKey) ? colorKey : null);
-  if (!hex) return 'rgba(148,163,184,0.14)';
-  if (COLORS[colorKey] && document.getElementById('zg-' + colorKey)) return 'url(#zg-' + colorKey + ')';
+  const palette = getActiveColors();
+  const theme = document.body.getAttribute('data-theme') || '';
+  const alpha = theme === 'clay-soft' ? 0.22 : 0.14;
+  const hex = palette[colorKey] || COLORS[colorKey] || (typeof colorKey === 'string' && /^#[0-9a-fA-F]{6}$/.test(colorKey) ? colorKey : null);
+  if (!hex) return 'rgba(148,163,184,' + alpha + ')';
   const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
-  return 'rgba(' + r + ',' + g + ',' + b + ',0.14)';
+  return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
 }
 // 颜色统一解析：命名键 -> 对应十六进制；否则当作十六进制原值
 function resolveColor(c) {
   if (!c) return '#22C55E';
-  return COLORS[c] || c;
+  const palette = getActiveColors();
+  return palette[c] || COLORS[c] || c;
 }
 // 最近使用颜色（持久化到 localStorage）
 let recentColors = (() => {
@@ -1810,7 +2288,7 @@ function colorPickerHTML(kind, id, current, prop) {
     if (name === 'none') {
       return `<div class="color-swatch color-swatch-none ${current === 'none' ? 'selected' : ''}" title="无颜色" onclick="applyColor('${kind}','${id}','none','${prop}')"></div>`;
     }
-    return `<div class="color-swatch ${current === name ? 'selected' : ''}" style="background:${COLORS[name]}" title="${name}" onclick="applyColor('${kind}','${id}','${name}','${prop}')"></div>`;
+    return `<div class="color-swatch ${current === name ? 'selected' : ''}" style="background:${resolveColor(name)}" title="${name}" onclick="applyColor('${kind}','${id}','${name}','${prop}')"></div>`;
   }).join('');
   const recent = recentColors.slice(0, 7).map(c =>
     `<div class="color-swatch" style="background:${c}" title="${c}" onclick="applyColor('${kind}','${id}','${c}','${prop}')"></div>`
@@ -1851,6 +2329,7 @@ function applyColor(kind, id, value, prop) {
   addRecentColor(stored);
 }
 
+/** @param {DiagramTab} tab */
 function renderZones(tab) {
   const layer = document.getElementById('zonesLayer');
   layer.innerHTML = '';
@@ -2014,6 +2493,7 @@ function nodeHexPts(n) {
 function nodeTextY(n, idx) {
   return idx === 0 ? n.y + n.h/2 - 4 : n.y + n.h/2 + 13;
 }
+/** @param {DiagramTab} tab */
 function renderNodes(tab) {
   const layer = document.getElementById('nodesLayer');
   layer.innerHTML = '';
@@ -2022,7 +2502,7 @@ function renderNodes(tab) {
     const sel = state.selectedId === n.id && state.selectedType === 'node';
     const border = n.borderStyle || 'solid';
     const borderColor = resolveColor(n.color);
-    const fillVal = n.fill ? resolveColor(n.fill) : null;
+    const fillVal = n.fill && n.fill !== 'none' ? resolveColor(n.fill) : (n.fill === 'none' ? 'transparent' : null);
     let strokeDash = border === 'dashed' ? '5 3' : (sel ? '5 3' : 'none');
     let strokeOpacity = (border === 'none' && !sel) ? 0 : (sel ? 1 : 0.4);
     const sh = nodeShape(n);
@@ -2032,7 +2512,7 @@ function renderNodes(tab) {
       'stroke-dasharray': strokeDash,
       'data-id': n.id, 'data-type': 'node', 'data-shape': n.shape || 'rect'
     });
-    if (fillVal) shapeAttrs.fill = fillVal;
+    if (fillVal) shapeAttrs.style = 'fill:' + fillVal;
     const shapeEl = createSvgEl(sh.tag, shapeAttrs);
     g.appendChild(shapeEl);
     const text = createSvgEl('text', {
@@ -2131,6 +2611,7 @@ function hlineSegments(x1, x2, ints) {
   if (cur < x2) segs.push([cur, x2, false]);
   return segs.length ? segs : [[x1, x2, false]];
 }
+/** @param {DiagramTab} tab */
 function renderHLines(tab) {
   const layer = document.getElementById('hlinesLayer');
   layer.innerHTML = '';
@@ -2168,6 +2649,7 @@ function renderHLines(tab) {
 
 // 四向连线锚点独立图层（位于连线之上，避免被连线命中区遮挡点击）
 // 连线模式下：除起点外所有节点显示锚点（便于精确选择目标方向）；否则仅渲染「选中节点」的锚点
+/** @param {DiagramTab} tab */
 function renderAnchors(tab) {
   const layer = document.getElementById('anchorsLayer');
   layer.innerHTML = '';
@@ -2195,6 +2677,7 @@ function renderNodeAnchors(layer, n) {
   });
 }
 
+/** @param {DiagramTab} tab */
 function renderFlows(tab) {
   const layer = document.getElementById('flowsLayer');
   layer.innerHTML = '';
@@ -2242,6 +2725,7 @@ function renderFlows(tab) {
   });
 }
 
+/** @param {DiagramTab} tab */
 function renderParticles(tab) {
   const layer = document.getElementById('particlesLayer');
   layer.innerHTML = '';
@@ -3272,7 +3756,86 @@ function toggleAnimation() {
   render();
 }
 function clearAll() {
-  if (!confirm('确定清空全部内容？所有标签页数据与本地保存将被清除，标题将一并清空。')) return;
+  const hasData = state.tabs.some(t => (t.nodes && t.nodes.length) || (t.zones && t.zones.length) || (t.flows && t.flows.length));
+  if (!hasData) {
+    if (!confirm('确定清空全部内容？')) return;
+  } else {
+    const title = (state.appTitle || '').trim();
+    const msg = title
+      ? '确定清空「' + title + '」的全部内容？清空后无法恢复。'
+      : '确定清空全部内容？所有标签页数据与本地保存将被清除。';
+    const mask = document.createElement('div');
+    mask.className = 'modal-mask';
+    const box = document.createElement('div');
+    box.className = 'modal-box';
+    const modalTitle = document.createElement('p');
+    modalTitle.className = 'modal-title';
+    modalTitle.textContent = '清空确认';
+    const msgEl = document.createElement('p');
+    msgEl.style.cssText = 'font-size:13px;color:var(--text);line-height:1.6;margin:0 0 12px';
+    msgEl.textContent = msg;
+    const checkLabel = document.createElement('label');
+    checkLabel.style.cssText = 'display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-dim);cursor:pointer';
+    const check = document.createElement('input');
+    check.type = 'checkbox';
+    check.checked = true;
+    checkLabel.appendChild(check);
+    checkLabel.appendChild(document.createTextNode('清空前导出备份'));
+    const actions = document.createElement('div');
+    actions.className = 'modal-actions';
+    const cancel = document.createElement('button');
+    cancel.className = 'modal-btn';
+    cancel.textContent = '取消';
+    const ok = document.createElement('button');
+    ok.className = 'modal-btn primary';
+    ok.textContent = '清空';
+    ok.style.background = 'var(--red, #EF4444)';
+    ok.style.borderColor = 'var(--red, #EF4444)';
+    actions.appendChild(cancel);
+    actions.appendChild(ok);
+    box.appendChild(modalTitle);
+    box.appendChild(msgEl);
+    box.appendChild(checkLabel);
+    box.appendChild(actions);
+    mask.appendChild(box);
+    document.body.appendChild(mask);
+    const close = () => { if (mask.parentNode) mask.parentNode.removeChild(mask); };
+    cancel.onclick = close;
+    mask.onclick = (e) => { if (e.target === mask) close(); };
+    ok.onclick = () => {
+      if (check.checked) {
+        const data = {
+          version: 1,
+          appTitle: state.appTitle,
+          tabs: state.tabs.map(t => ({
+            id: t.id, label: t.label, desc: t.desc,
+            nodes: t.nodes, flows: t.flows, zones: t.zones, hlines: t.hlines || []
+          }))
+        };
+        const now = new Date();
+        const ts = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + '_' + String(now.getHours()).padStart(2,'0') + String(now.getMinutes()).padStart(2,'0');
+        const name = (title || 'flow-diagram') + '_备份_' + ts + '.json';
+        downloadFile(name, JSON.stringify(data, null, 2));
+        showToast('备份已导出：' + name);
+      }
+      close();
+      try { localStorage.removeItem(SAVE_KEY); } catch(e) {}
+      state.appTitle = '';
+      const h1 = document.getElementById('appTitle');
+      if (h1) h1.textContent = '';
+      document.title = '';
+      state.tabs = buildDefaultTabs();
+      state.activeTab = state.tabs[0].id;
+      state.selectedId = null; state.selectedType = null;
+      state._autoSaveReady = false;
+      renderTabBar();
+      render();
+      state._autoSaveReady = true;
+      updateSaveStatus('none');
+      showToast('已清空');
+    };
+    return;
+  }
   try { localStorage.removeItem(SAVE_KEY); } catch(e) {}
   // 标题一并清空：页面内标题、浏览器标签标题（兜底空白显示）、状态值
   state.appTitle = '';
@@ -3734,6 +4297,9 @@ let resizingZone = null;              // 正在缩放的区域 id
 let resizingNode = null;             // 正在缩放的节点 id
 let resizeSide = '';                  // 控制点方向 n/s/w/e/nw/ne/sw/se
 let resizeStart = { x: 0, y: 0, ox: 0, oy: 0, ow: 0, oh: 0 };
+let panning = false;
+let panStart = { x: 0, y: 0 };
+let panViewBox = { x: 0, y: 0 }; // viewBox 原点偏移（无限画布平移）
 
 const svg = document.getElementById('mainSvg');
 
@@ -3883,6 +4449,16 @@ svg.addEventListener('mousedown', (e) => {
       }
     }
   } else {
+    // 中键拖拽 = 画布平移（无限画布）
+    if (e.button === 1) {
+      e.preventDefault();
+      panning = true;
+      panStart = { x: e.clientX, y: e.clientY };
+      const vb = (svg.getAttribute('viewBox') || '0 0 1200 560').split(/\s+/).map(Number);
+      panViewBox = { x: vb[0], y: vb[1] };
+      svg.style.cursor = 'grabbing';
+      return;
+    }
     state.selectedId = null;
     state.selectedType = null;
     state.selectedZones = [];
@@ -3941,6 +4517,19 @@ function syncNodeSvg(node) {
 
 svg.addEventListener('mousemove', (e) => {
   const pt = getSVGPoint(e);
+
+  if (panning) {
+    const svgRect = svg.getBoundingClientRect();
+    const vb = (svg.getAttribute('viewBox') || '0 0 1200 560').split(/\s+/).map(Number);
+    const scaleX = vb[2] / svgRect.width;
+    const scaleY = vb[3] / svgRect.height;
+    const dx = (e.clientX - panStart.x) * scaleX;
+    const dy = (e.clientY - panStart.y) * scaleY;
+    const newX = panViewBox.x - dx;
+    const newY = panViewBox.y - dy;
+    svg.setAttribute('viewBox', newX + ' ' + newY + ' ' + vb[2] + ' ' + vb[3]);
+    return;
+  }
 
   if (state.connectMode && state.connectFrom) {
     const tab = getTab();
@@ -4064,6 +4653,7 @@ svg.addEventListener('mousemove', (e) => {
 
 svg.addEventListener('mouseup', () => {
   pendingDragUndo = false;
+  if (panning) { panning = false; svg.style.cursor = ''; markDirty(); }
   if (dragging) { dragging = null; markDirty(); }
   if (draggingZone) { draggingZone = null; markDirty(); }
   if (resizingZone) { resizingZone = null; markDirty(); }
